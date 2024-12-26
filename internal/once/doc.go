@@ -11,20 +11,8 @@ The expeted signature of once.Do is `func (o *Once) Do(f func())`
 */
 package once
 
-import "sync/atomic"
-
 // type Once struct{}
 
 // func (o *Once) Do(f func()) {
 
 // }
-
-type Once struct {
-	ctr atomic.Int32
-}
-
-func (o *Once) Do(f func()) {
-	if o.ctr.Add(1) == 1 {
-		f()
-	}
-}
